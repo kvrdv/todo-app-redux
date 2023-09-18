@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/kvrdv/todo-test/static/css/main.8d886f2b.css",
+    "main.js": "/kvrdv/todo-test/static/js/main.7d5eadb8.js",
+    "index.html": "/kvrdv/todo-test/index.html",
+    "main.8d886f2b.css.map": "/kvrdv/todo-test/static/css/main.8d886f2b.css.map",
+    "main.7d5eadb8.js.map": "/kvrdv/todo-test/static/js/main.7d5eadb8.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8d886f2b.css",
+    "static/js/main.7d5eadb8.js"
+  ]
+}
