@@ -1,0 +1,11 @@
+@import '../../assets/styles/reset.scss';
+@import '../../assets/styles/variables.scss';
+
+.container {
+	max-width: 33rem;
+	margin: 0 auto;
+	font: $montserrat;
+	background-color: $white;
+	padding: 1rem;
+	color: $black;
+}
