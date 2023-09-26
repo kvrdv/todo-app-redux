@@ -1,15 +1,16 @@
-import React, { FC, ReactElement, useEffect } from 'react';
-import styles from './App.module.scss';
+import { FC, useEffect } from 'react';
 import Header from '../header/Header';
 import Add from '../add/Add';
-import { v4 as uuidv4 } from 'uuid';
 import { useState } from 'react';
 import TodoList from '../todo-list/TodoList';
 import Filter from '../filter/Filter';
 import { ITodo } from 'src/types';
+import GlobalStyle from 'src/assets/styles/global';
+import { Box } from '@mui/material';
+import { createTodo, filtering } from './app.utils';
 
-const App: FC = (): ReactElement => {
-	const [filter, setFilter] = useState('all');
+const App: FC = () => {
+	const [filter, setFilter] = useState<string | null>('all');
 	const [data, setData] = useState<ITodo[]>([]);
 
 	const onDeleted = (id: string): void => {
@@ -20,11 +21,11 @@ const App: FC = (): ReactElement => {
 		});
 	};
 
-	const onToggleDone = (id: string): void => {
+	const onToggleCompleted = (id: string): void => {
 		setData(() => {
 			const idx = data.findIndex((el) => el.id === id);
 			const oldItem = data[idx];
-			const newItem = { ...oldItem, done: !oldItem.done };
+			const newItem = { ...oldItem, completed: !oldItem.completed };
 			const newData = [
 				...data.slice(0, idx),
 				newItem,
@@ -35,76 +36,65 @@ const App: FC = (): ReactElement => {
 		});
 	};
 
-	const create = (label: string): ITodo => {
-		return {
-			id: uuidv4(),
-			label,
-			done: false,
-		};
-	};
-
 	const onAdded = (label: string): void => {
-		const newTodo = create(label);
-
+		const newTodo = createTodo(label);
 		setData(() => {
 			const newData = [...data, newTodo];
 			return newData;
 		});
 	};
 
-	const onClear = () => {
+	const handleClear = () => {
 		setData(() => {
-			const newData = data.filter((item) => !item.done);
+			const newData = data.filter((item) => !item.completed);
 			return newData;
 		});
 	};
 
-	const onFilterChange = (filter: string): void => {
-		setFilter(filter);
-	};
-
-	const filtering = (items: ITodo[], filter: string): ITodo[] => {
-		console.log('filter');
-		switch (filter) {
-			case 'active':
-				return items.filter((item) => !item.done);
-			case 'done':
-				return items.filter((item) => item.done);
-			default:
-				return items;
-		}
+	const handleFilter = (
+		event: React.MouseEvent<HTMLElement, MouseEvent>,
+		newFilter: string
+	) => {
+		setFilter(newFilter);
 	};
 
 	const visibleItems = filtering(data, filter);
-	const doneCount = data.filter((element) => element.done).length;
-	const activeCount = data.length - doneCount;
+	const completedCount = data.filter((element) => element.completed).length;
+	const activeCount = data.length - completedCount;
 
 	useEffect(() => {
 		setData([
-			create("Don't eat"),
-			create("Don't sleep"),
-			create('Look good'),
-			create("Don't speak"),
+			createTodo("Don't eat"),
+			createTodo("Don't sleep"),
+			createTodo('Look good'),
+			createTodo("Don't speak"),
 		]);
 	}, []);
 
 	return (
-		<div className={styles.container}>
-			<Header title="todos" active={activeCount} done={doneCount} />
-
+		<Box
+			sx={{
+				boxShadow: 3,
+				borderRadius: '16px',
+				padding: '1.3rem',
+				m: '0 auto',
+				width: '600px',
+			}}
+		>
+			<GlobalStyle />
+			<Header activeCount={activeCount} completedCount={completedCount} />
 			<Filter
 				filter={filter}
-				onFilterChange={onFilterChange}
-				onClear={onClear}
+				onFilterChange={handleFilter}
+				onClearCompleted={handleClear}
 			/>
 			<Add onAdded={onAdded} />
-
 			<TodoList
 				todos={visibleItems}
 				onDeleted={onDeleted}
-				onToggleDone={onToggleDone}
+				onToggleCompleted={onToggleCompleted}
 			/>
-		</div>
+		</Box>
 	);
 };
 

@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
-import { FC, ReactElement } from 'react';
-import styles from './Add.module.scss';
+import { useState } from 'react';
+import { FC } from 'react';
+import { TextField } from '@mui/material';
 
-const Add: FC<{ onAdded(label: string): void }> = ({
-	onAdded,
-}): ReactElement => {
+const Add: FC<{ onAdded(label: string): void }> = ({ onAdded }) => {
 	const [label, setLabel] = useState('');
 
 	const onLabelChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -18,12 +16,14 @@ const Add: FC<{ onAdded(label: string): void }> = ({
 	};
 
 	return (
-		<form className={styles.container} onSubmit={onSubmit}>
-			<input
-				placeholder="What needs to de done?"
-				type="text"
-				value={label}
+		<form onSubmit={onSubmit}>
+			<TextField
+				sx={{ width: '100%' }}
+				id="outlined-controlled"
+				label="What needs to de done?"
+				variant="outlined"
 				onChange={onLabelChange}
+				value={label}
 			/>
 		</form>
 	);

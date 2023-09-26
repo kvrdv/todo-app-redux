@@ -1,21 +1,48 @@
+import { Box, Typography } from '@mui/material';
 import { FC } from 'react';
-import styles from './Header.module.scss';
 
-export interface HeaderProps {
-	title: string;
-	active: number;
-	done: number;
+interface HeaderProps {
+	activeCount: number;
+	completedCount: number;
 }
 
-const Header: FC<HeaderProps> = ({ title, active, done }: HeaderProps) => {
+const Header: FC<HeaderProps> = ({
+	activeCount,
+	completedCount,
+}: HeaderProps) => {
 	return (
-		<div className={styles.container}>
-			<h1>{title}</h1>
-			<h2>
-				<span className={styles.count}>{active}</span> more to do,{' '}
-				<span className={styles.count}>{done}</span> done
-			</h2>
-		</div>
+		<Box
+			sx={{
+				mb: '1.3rem',
+				pb: '1.3rem',
+				display: 'flex',
+				flexDirection: 'row',
+				justifyContent: 'space-between',
+				borderBottom: '2px solid #1976d2'
+			}}
+		>
+			<Typography
+				variant="h1"
+				sx={{
+					color: '#1976d2',
+					fontSize: '3rem',
+				}}
+			>
+				Todo App
+			</Typography>
+
+			<Typography
+				variant="h3"
+				sx={{
+					color: 'rgba(0, 0, 0, 0.4)',
+					fontSize: '1.3rem',
+					fontWeight: '600',
+					alignSelf: 'flex-end',
+				}}
+			>
+				{activeCount} more to do, {completedCount} done{' '}
+			</Typography>
+		</Box>
 	);
 };
 

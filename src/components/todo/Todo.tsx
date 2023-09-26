@@ -1,24 +1,48 @@
-import clsx from 'clsx';
-import styles from './Todo.module.scss';
+import {
+	Checkbox,
+	IconButton,
+	ListItem,
+	ListItemButton,
+	ListItemIcon,
+	ListItemText,
+} from '@mui/material';
 import { FC } from 'react';
 import { ITodo } from 'src/types';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
 interface TodoProps {
 	todo: ITodo;
 	onDeleted: () => void;
-	onToggleDone: () => void;
+	onToggleCompleted: () => void;
 }
 
-const Todo: FC<TodoProps> = ({ todo, onDeleted, onToggleDone }: TodoProps) => {
+const Todo: FC<TodoProps> = ({
+	todo,
+	onDeleted,
+	onToggleCompleted,
+}: TodoProps) => {
 	return (
-		<li className={clsx(styles.container, { [styles.done]: !!todo.done })}>
-			<span id={todo.id} onClick={onToggleDone}>
-				{todo.label}
-			</span>
-			<button className={styles.button} onClick={onDeleted}>
-				Delete
-			</button>
-		</li>
+		<ListItem
+			secondaryAction={
+				<IconButton edge="end" aria-label="delete" onClick={onDeleted}>
+					<DeleteOutlineIcon />
+				</IconButton>
+			}
+			disablePadding
+		>
+			<ListItemButton role={undefined} onClick={onToggleCompleted} dense>
+				<ListItemIcon>
+					<Checkbox
+						edge="start"
+						checked={todo.completed}
+						tabIndex={-1}
+						disableRipple
+						inputProps={{ 'aria-labelledby': todo.id }}
+					/>
+				</ListItemIcon>
+				<ListItemText id={todo.id} primary={todo.label} />
+			</ListItemButton>
+		</ListItem>
 	);
 };
 

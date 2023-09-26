@@ -1,31 +1,38 @@
 import { FC } from 'react';
 import Todo from '../todo/Todo';
-import styles from './TodoList.module.scss';
 import { ITodo } from 'src/types';
+import { v4 as uuidv4 } from 'uuid';
+import { List } from '@mui/material';
 
 interface TodoListProps {
 	todos: ITodo[];
 	onDeleted: (id: string) => void;
-	onToggleDone: (id: string) => void;
+	onToggleCompleted: (id: string) => void;
 }
 
 const TodoList: FC<TodoListProps> = ({
 	todos,
 	onDeleted,
-	onToggleDone,
+	onToggleCompleted,
 }: TodoListProps) => {
 	return (
-		<ul className={styles.list}>
-			{todos.map(({ id, label, done }: ITodo) => {
+		<List
+			sx={{
+				mt: '1.3rem',
+				p: 0,
+			}}
+		>
+			{todos.map(({ id, label, completed }: ITodo) => {
 				return (
 					<Todo
-						todo={{ id, label, done }}
+						key={uuidv4()}
+						todo={{ id, label, completed }}
 						onDeleted={() => onDeleted(id)}
-						onToggleDone={() => onToggleDone(id)}
+						onToggleCompleted={() => onToggleCompleted(id)}
 					/>
 				);
 			})}
-		</ul>
+		</List>
 	);
 };
 

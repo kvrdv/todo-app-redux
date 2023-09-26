@@ -1,46 +1,48 @@
 import { FC } from 'react';
-import styles from './Filter.module.scss';
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import { Box, Button } from '@mui/material';
 
 interface FilterProps {
-	filter: string;
-	onFilterChange: (filter: string) => void;
-	onClear: () => void;
+	filter: string | null;
+	onFilterChange: (
+		event: React.MouseEvent<HTMLElement, MouseEvent>,
+		newFilter: string
+	) => void;
+	onClearCompleted: () => void;
 }
 
 const Filter: FC<FilterProps> = ({
 	filter,
 	onFilterChange,
-	onClear,
+	onClearCompleted,
 }: FilterProps) => {
-	const elements = [
-		{ name: 'all', label: 'All' },
-		{ name: 'active', label: 'Active' },
-		{ name: 'done', label: 'Done' },
-	];
-
 	return (
-		<div className={styles.container}>
-			<div>
-				{elements.map(({ name, label }) => {
-					// const isActive = filter === name;
-					// const classNames = isActive ? 'btn-info' : 'btn-outline-secondary';
+		<Box
+			sx={{
+				display: 'flex',
+				flexDirection: 'row',
+				justifyContent: 'space-between',
+				m: '1.3rem 0',
+				height: '2rem',
+			}}
+		>
+			<ToggleButtonGroup
+				color="primary"
+				value={filter}
+				exclusive
+				onChange={onFilterChange}
+				aria-label="Filter"
+			>
+				<ToggleButton value="all">All</ToggleButton>
+				<ToggleButton value="active">Active</ToggleButton>
+				<ToggleButton value="completed">Completed</ToggleButton>
+			</ToggleButtonGroup>
 
-					return (
-						<button
-							className={styles.button}
-							key={name}
-							onClick={() => onFilterChange(name)}
-						>
-							{label}
-						</button>
-					);
-				})}
-			</div>
-
-			<button className={styles.button} onClick={() => onClear()}>
+			<Button color="error" variant="outlined" onClick={onClearCompleted}>
 				Clear completed
-			</button>
-		</div>
+			</Button>
+		</Box>
 	);
 };
 

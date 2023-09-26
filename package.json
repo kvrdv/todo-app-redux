@@ -1,6 +1,6 @@
 {
-	"homepage": "https://github.com/kvrdv/todo-test",
-	"name": "todo-test",
+	"homepage": "https://github.com/kvrdv/todo-app",
+	"name": "todo-app",
 	"version": "0.1.0",
 	"private": true,
 	"description": "todo app",
@@ -36,24 +36,30 @@
 		]
 	},
 	"dependencies": {
-		"@testing-library/jest-dom": "^5.17.0",
-		"@testing-library/react": "^13.4.0",
-		"@testing-library/user-event": "^13.5.0",
+		"@emotion/react": "^11.11.1",
+		"@emotion/styled": "^11.11.0",
+		"@material-ui/core": "^4.12.4",
+		"@material-ui/icons": "^4.11.3",
+		"@mui/icons-material": "^5.14.9",
+		"@mui/material": "^5.14.10",
 		"@types/jest": "^27.5.2",
 		"@types/node": "^16.18.51",
 		"@types/react": "^18.2.21",
 		"@types/react-dom": "^18.2.7",
-		"clsx": "^2.0.0",
 		"gh-pages": "^6.0.0",
-		"react": "^18.2.0",
-		"react-dom": "^18.2.0",
+		"react": "^17.0.0 || ^18.0.0",
+		"react-dom": "^17.0.0 || ^18.0.0",
 		"react-scripts": "5.0.1",
-		"sass": "^1.67.0",
+		"styled-components": "^6.0.8",
 		"typescript": "^4.9.5",
-		"uuid": "^9.0.1",
-		"web-vitals": "^2.1.4"
+		"uuid": "^9.0.1"
 	},
 	"devDependencies": {
+		"@types/styled-components": "^5.1.28",
 		"@types/uuid": "^9.0.4"
+	},
+	"peerDependencies": {
+		"react": "^17.0.0 || ^18.0.0",
+		"react-dom": "^17.0.0 || ^18.0.0"
 	}
 }
