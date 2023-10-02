@@ -1,36 +1,28 @@
 import { FC } from 'react';
 import Todo from '../todo/Todo';
-import { ITodo } from 'src/types';
 import { v4 as uuidv4 } from 'uuid';
 import { List } from '@mui/material';
+import styles from './todo-list.styles';
+import { useAppSelector } from '../../hooks/hooks';
+import filtering from '../../utils/utils';
 
-interface TodoListProps {
-	todos: ITodo[];
-	onDeleted: (id: string) => void;
-	onToggleCompleted: (id: string) => void;
-}
+const TodoList: FC = () => {
+	const activeWeekday = useAppSelector((state) => state.filters.activeDay);
+	const activeFilter = useAppSelector((state) => state.filters.activeFilter);
 
-const TodoList: FC<TodoListProps> = ({
-	todos,
-	onDeleted,
-	onToggleCompleted,
-}: TodoListProps) => {
+	const allTodos = useAppSelector((state) => state.todos);
+	let visibleTodos = filtering(allTodos, activeFilter);
+
+	if (activeWeekday !== 'All') {
+		visibleTodos = visibleTodos.filter(
+			({ weekday }) => weekday === activeWeekday
+		);
+	}
+
 	return (
-		<List
-			sx={{
-				mt: '1.3rem',
-				p: 0,
-			}}
-		>
-			{todos.map(({ id, label, completed }: ITodo) => {
-				return (
-					<Todo
-						key={uuidv4()}
-						todo={{ id, label, completed }}
-						onDeleted={() => onDeleted(id)}
-						onToggleCompleted={() => onToggleCompleted(id)}
-					/>
-				);
+		<List sx={styles.list}>
+			{visibleTodos.map((todo) => {
+				return <Todo key={uuidv4()} todo={todo} />;
 			})}
 		</List>
 	);

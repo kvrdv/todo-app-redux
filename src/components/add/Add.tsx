@@ -1,9 +1,13 @@
-import { useState } from 'react';
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { TextField } from '@mui/material';
+import styles from './add.styles';
+import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
+import { addTodo } from '../../store/slices/todosSlice';
 
-const Add: FC<{ onAdded(label: string): void }> = ({ onAdded }) => {
+const Add: FC = () => {
 	const [label, setLabel] = useState('');
+	const dispatch = useAppDispatch();
+	const activeWeekday = useAppSelector((state) => state.filters.activeDay);
 
 	const onLabelChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setLabel(event.target.value);
@@ -11,16 +15,16 @@ const Add: FC<{ onAdded(label: string): void }> = ({ onAdded }) => {
 
 	const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
-		onAdded(label);
+		dispatch(addTodo(label, activeWeekday));
 		setLabel('');
 	};
 
 	return (
 		<form onSubmit={onSubmit}>
 			<TextField
-				sx={{ width: '100%' }}
+				sx={styles.textField}
 				id="outlined-controlled"
-				label="What needs to de done?"
+				label="Create new todo"
 				variant="outlined"
 				onChange={onLabelChange}
 				value={label}

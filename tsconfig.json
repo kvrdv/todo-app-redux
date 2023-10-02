@@ -19,11 +19,13 @@
 		"jsx": "preserve",
 		"incremental": true,
 		"allowSyntheticDefaultImports": true,
-		"baseUrl": ".",
+		"baseUrl": "./src/",
 		"paths": {
-			"@/*": [
-				"./app/*"
-			]
+			"@/components/*": ["components/*"],
+			"@/hooks/*": ["hooks/*"],
+			"@/utils/*": ["utils/*"],
+			"@/assets/*": ["assets/*"],
+			"@/store/*": ["store/*"]
 		}
 	},
 	"include": [

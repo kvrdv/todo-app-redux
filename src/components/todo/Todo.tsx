@@ -1,3 +1,5 @@
+import { FC } from 'react';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import {
 	Checkbox,
 	IconButton,
@@ -6,31 +8,41 @@ import {
 	ListItemIcon,
 	ListItemText,
 } from '@mui/material';
-import { FC } from 'react';
-import { ITodo } from 'src/types';
-import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import { TodoProps } from './todo.types';
+import { useAppDispatch } from '../../hooks/hooks';
+import { deleteTodo, toggleComplete } from '../../store/slices/todosSlice';
 
-interface TodoProps {
-	todo: ITodo;
-	onDeleted: () => void;
-	onToggleCompleted: () => void;
-}
+const Todo: FC<TodoProps> = ({ todo }) => {
+	const dispatch = useAppDispatch();
 
-const Todo: FC<TodoProps> = ({
-	todo,
-	onDeleted,
-	onToggleCompleted,
-}: TodoProps) => {
+	const onDeleted = (event: React.MouseEvent) => {
+		dispatch(deleteTodo(event.currentTarget.id));
+	};
+
+	const onToggleCompleted = (event: React.MouseEvent) => {
+		dispatch(toggleComplete(event.currentTarget.id));
+	};
+
 	return (
 		<ListItem
 			secondaryAction={
-				<IconButton edge="end" aria-label="delete" onClick={onDeleted}>
+				<IconButton
+					edge="end"
+					aria-label="delete"
+					onClick={onDeleted}
+					id={todo.id}
+				>
 					<DeleteOutlineIcon />
 				</IconButton>
 			}
 			disablePadding
 		>
-			<ListItemButton role={undefined} onClick={onToggleCompleted} dense>
+			<ListItemButton
+				role={undefined}
+				onClick={onToggleCompleted}
+				dense
+				id={todo.id}
+			>
 				<ListItemIcon>
 					<Checkbox
 						edge="start"

@@ -1,0 +1,27 @@
+import { Typography } from '@mui/material';
+import { FC } from 'react';
+import styles from './counter.styles';
+import { useAppSelector } from '../../hooks/hooks';
+
+const Counter: FC = () => {
+	let todos = useAppSelector((state) => state.todos);
+	const activeWeekday = useAppSelector((state) => state.filters.activeDay);
+
+	let textComment = 'Total';
+	if (activeWeekday !== 'All') {
+		todos = todos.filter(({ weekday }) => weekday === activeWeekday);
+
+		textComment = `on ${activeWeekday}`;
+	}
+
+	const completedCount = todos.filter((element) => element.completed).length;
+	const activeCount = todos.length - completedCount;
+
+	return (
+		<Typography variant="h3" sx={styles.typography}>
+			{activeCount} more to do, {completedCount} done {textComment}
+		</Typography>
+	);
+};
+
+export default Counter;
