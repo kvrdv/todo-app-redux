@@ -1,6 +1,6 @@
 {
 	"homepage": "https://github.com/kvrdv/weekclick",
-	"name": "todo-app",
+	"name": "weekclick",
 	"version": "0.1.0",
 	"private": true,
 	"description": "Weekclick is an application that allows you to create todo lists for each day of the week",

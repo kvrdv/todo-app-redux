@@ -7,19 +7,12 @@ const Counter: FC = () => {
 	let todos = useAppSelector((state) => state.todos);
 	const activeWeekday = useAppSelector((state) => state.filters.activeDay);
 
-	let textComment = 'Total';
-	if (activeWeekday !== 'All') {
-		todos = todos.filter(({ weekday }) => weekday === activeWeekday);
-
-		textComment = `on ${activeWeekday}`;
-	}
-
 	const completedCount = todos.filter((element) => element.completed).length;
 	const activeCount = todos.length - completedCount;
 
 	return (
 		<Typography variant="h3" sx={styles.typography}>
-			{activeCount} more to do, {completedCount} done {textComment}
+			{activeCount} to do / {completedCount} done / on {activeWeekday}
 		</Typography>
 	);
 };

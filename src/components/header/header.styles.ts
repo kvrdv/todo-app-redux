@@ -6,13 +6,13 @@ const styles = {
 		justifyContent: 'space-between',
 		color: '#1976d2',
 	},
+	logoBox: {
+		display: 'flex',
+		flexDirection: 'row',
+	},
 	h1: {
 		fontSize: '3rem',
-	},
-	h3: {
-		fontSize: '1.3rem',
-		fontWeight: '600',
-		alignSelf: 'flex-end',
+		ml: '16px',
 	},
 };
 

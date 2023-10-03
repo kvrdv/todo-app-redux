@@ -1,4 +1,4 @@
-import { Todo } from 'types/types';
+import { Todo } from '../../types/types';
 
 export type TodoProps = {
 	todo: Todo;

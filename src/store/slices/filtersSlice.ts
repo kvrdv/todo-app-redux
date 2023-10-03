@@ -7,8 +7,8 @@ type FiltersState = {
 }
 
 const initialState: FiltersState = {
-	activeDay: 'All',
-	activeFilter: 'All',
+	activeDay: 'Monday',
+	activeFilter: 'Active',
 };
 
 export const filtersSlice = createSlice({

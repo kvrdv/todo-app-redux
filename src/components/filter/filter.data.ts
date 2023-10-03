@@ -1,5 +1,4 @@
 const availableWeekdays = [
-	'All',
 	'Monday',
 	'Tuesday',
 	'Wednesday',
@@ -10,7 +9,6 @@ const availableWeekdays = [
 ];
 
 const availableFilters = [
-	'All',
 	'Active',
 	'Completed',
 ];

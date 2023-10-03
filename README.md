@@ -9,7 +9,7 @@ Weekclick is an application that allows you to create todo lists for each day of
 ### Install and run the app:
 
 ```
-git clone https://github.com/kvrdv/todo-app.git
+git clone https://github.com/kvrdv/weekclick.git
 ```
 
 ```

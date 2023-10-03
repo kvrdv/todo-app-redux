@@ -1,9 +1,9 @@
 const styles = {
 	typography: {
-		fontSize: '1.3rem',
+		fontSize: '1.1rem',
 		fontWeight: '600',
 		alignSelf: 'flex-end',
-		pb: '0.5rem'
+		pb: '0.5rem',
 	},
 };
 
