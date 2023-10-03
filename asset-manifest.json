@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.js": "/weekclick/static/js/main.816bd17d.js",
+    "main.js": "/weekclick/static/js/main.4ee1b1b3.js",
     "static/media/logo.svg": "/weekclick/static/media/logo.ccc289d4f0a4b5091c462a2cbcf9f258.svg",
     "index.html": "/weekclick/index.html",
-    "main.816bd17d.js.map": "/weekclick/static/js/main.816bd17d.js.map"
+    "main.4ee1b1b3.js.map": "/weekclick/static/js/main.4ee1b1b3.js.map"
   },
   "entrypoints": [
-    "static/js/main.816bd17d.js"
+    "static/js/main.4ee1b1b3.js"
   ]
 }
