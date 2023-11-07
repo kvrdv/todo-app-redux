@@ -1,11 +1,10 @@
 {
   "files": {
-    "main.js": "/weekclick/static/js/main.478133c7.js",
-    "static/media/logo.svg": "/weekclick/static/media/logo.ccc289d4f0a4b5091c462a2cbcf9f258.svg",
-    "index.html": "/weekclick/index.html",
-    "main.478133c7.js.map": "/weekclick/static/js/main.478133c7.js.map"
+    "main.js": "/kovardaev/todo-app-redux/static/js/main.0728291a.js",
+    "index.html": "/kovardaev/todo-app-redux/index.html",
+    "main.0728291a.js.map": "/kovardaev/todo-app-redux/static/js/main.0728291a.js.map"
   },
   "entrypoints": [
-    "static/js/main.478133c7.js"
+    "static/js/main.0728291a.js"
   ]
 }
