@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/kovardaev/todo-app-redux/static/js/main.0728291a.js",
-    "index.html": "/kovardaev/todo-app-redux/index.html",
-    "main.0728291a.js.map": "/kovardaev/todo-app-redux/static/js/main.0728291a.js.map"
+    "main.js": "/todo-app-redux/static/js/main.20d34aa3.js",
+    "index.html": "/todo-app-redux/index.html",
+    "main.20d34aa3.js.map": "/todo-app-redux/static/js/main.20d34aa3.js.map"
   },
   "entrypoints": [
-    "static/js/main.0728291a.js"
+    "static/js/main.20d34aa3.js"
   ]
 }
