@@ -1,13 +1,13 @@
 {
-	"homepage": "https://kvrdv.github.io/weekclick/",
-	"name": "weekclick",
-	"version": "0.1.0",
+	"homepage": "https://github.com/kovardaev/todo-app-redux",
+	"name": "todo-app",
+	"version": "0.2.0",
 	"private": true,
-	"description": "Weekclick is an application that allows you to create todo lists for each day of the week",
+	"description": "Todo App",
 	"author": {
-		"email": "s.kovardaev@gmail.com",
+		"email": "contact@kovardaev.com",
 		"name": "Semyon Kovardaev",
-		"url": "https://github.com/kvrdv"
+		"url": "https://github.com/kovardaev"
 	},
 	"scripts": {
 		"start": "react-scripts start",
